@@ -9,9 +9,11 @@
 3. Do certain players act as an in-between or connection to other players?  
 
 
-## Steps  
-1. Obtain a list of current NBA players and their Twitter handles.
-2. Scrape tweets from current NBA players to identify mentions and tags.  
-3. Produce edge lists and interaction matrices to calculate the social network position of each player.  
-4. Produce social networks using Twitter interactions.  
-5. Use social network metrics to identify possible trends by teams or players.  
+## To-do list  
+- [ ] Obtain a list of current NBA players and their Twitter handles.  
+  - Use [Basketball Reference](https://www.basketball-reference.com/friv/twitter.html) to obtain list of all NBA players and their Twitter handles.
+  - List of active players can be found from the official site for the [NBA](https://stats.nba.com/players/list/).
+- [ ] Scrape tweets from current NBA players to identify mentions and tags.  
+- [ ] Produce edge lists and interaction matrices to calculate the social network position of each player.  
+- [ ] Produce social networks using Twitter interactions.  
+- [ ] Use social network metrics to identify possible trends by teams or players.  
