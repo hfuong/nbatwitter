@@ -14,6 +14,7 @@ print(site)
 # Make BeautifulSoup object
 page = BeautifulSoup(site.content, features = "lxml")
 
+# Print HTML content with nice formatting
 print(page.prettify())
 
 
