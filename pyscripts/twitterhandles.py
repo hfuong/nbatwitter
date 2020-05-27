@@ -1,6 +1,7 @@
 # Import relevant modules
 import requests
 from bs4 import BeautifulSoup
+import csv
 
 
 # Get web page
@@ -22,13 +23,25 @@ playerTable = page.find('table')
 # Find all instances of player name by beginning of link within the table
 playerNameLinks = playerTable.select('a[href^="/players/"]')
 
-# Print all names
-for link in playerNameLinks:
-    print(link.text)
-
 # Find all instances of Twitter handles that contain twitter.com within the table
 playerTwitterLinks = playerTable.select('a[href*="twitter.com/"]')
 
-# Print all Twitter handles
-for link in playerTwitterLinks:
-    print(link.text)
+# Make a list of player names and another list of Twitter handles using the text from links
+player = []
+handle = []
+
+for name in playerNameLinks:
+    player.append(name.text)
+
+for account in playerTwitterLinks:
+    handle.append(account.text)
+
+# Combine the two lists into a zip object and then into a list again
+nbaTwitter = list(zip(player, handle))
+
+# Print output to CSV
+with open('twitterhandles.csv', 'w', encoding = 'utf-8') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['player', 'handle'])
+    for row in nbaTwitter:
+        writer.writerow(row)
