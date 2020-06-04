@@ -1,33 +1,19 @@
 # Import relevant modules
-import requests
+from selenium import webdriver
 from bs4 import BeautifulSoup
 
 
-# Get web page
-site = requests.get("https://stats.nba.com/players/list/")
+# Get web page with dynamic content that requires scrolling to load
+driver = webdriver.Chrome(executable_path = "C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe")
+driver.get('https://nba.com/players/')
 
-# Print status code; 200 = successfully downloaded
-print(site)
+html = driver.page_source
 
 # Make BeautifulSoup object
-page = BeautifulSoup(site.content, features = "lxml")
-
-# Print HTML content with nice formatting
-# print(page.prettify())
+page = BeautifulSoup(html)
 
 
 # Identify the specific page with player names and Twitter accounts
-playerTable = page.find('ul', {"class": "players-list__names"})
+playerTable = page.find_all('p', class_='nba-player-index__name')
 
-# Find all instances of player name by beginning of link within the table
-playerNameLinks = playerTable.select('a[href^="/players/"]')
-
-print(playerNameLinks)
-
-# Make a list of player names using the text from links
-player = []
-
-for name in playerNameLinks:
-    player.append(name.text)
-
-print(player)
+print(playerTable)
