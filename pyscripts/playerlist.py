@@ -12,11 +12,11 @@ driver.get("https://nba.com/players/")
 last_height = driver.execute_script("return document.body.scrollHeight")
 
 while True:
-    # Scroll down to bottom
+    # Scroll bottom of page
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    # Wait to load page
-    time.sleep(5)
+    # Pause scrolling to allow page to load
+    time.sleep(1)
 
     # Calculate new scroll height and compare with last scroll height
     new_height = driver.execute_script("return document.body.scrollHeight")
@@ -30,10 +30,12 @@ html = driver.page_source
 driver.quit()
 
 # Make BeautifulSoup object
-page = BeautifulSoup(html)
+page = BeautifulSoup(html, features = "lxml")
 
 
-# Identify the specific page with player names and Twitter accounts
-playerTable = page.find_all('p', class_='nba-player-index__name')
+# Identify the specific sections with player names
+playerParagraph = page.find_all('p', class_='nba-player-index__name')
 
-print(playerTable)
+# Get only the text within the paragraph tags
+for p in playerParagraph:
+    print(p.get_text(strip = True, separator = ' '))
