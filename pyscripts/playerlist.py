@@ -2,6 +2,7 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
+import csv
 
 
 # Get web page with dynamic content that requires scrolling to load
@@ -36,6 +37,9 @@ page = BeautifulSoup(html, features = "lxml")
 # Identify the specific sections with player names
 playerParagraph = page.find_all('p', class_='nba-player-index__name')
 
-# Get only the text within the paragraph tags
-for p in playerParagraph:
-    print(p.get_text(strip = True, separator = ' '))
+# Print only the text within the paragraph tags into a CSV
+with open('currentplayers.csv', 'w', encoding = 'utf-8') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['player'])
+    for p in playerParagraph:
+        writer.writerow([p.get_text(strip = True, separator = ' ')])
