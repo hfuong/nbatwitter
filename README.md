@@ -11,8 +11,9 @@
 
 ## To-do list  
 - [ ] Obtain a list of current NBA players and their Twitter handles.  
-  - [x] Use [Basketball Reference](https://www.basketball-reference.com/friv/twitter.html) to obtain list of all NBA players and their Twitter handles.  
-  - [ ] Use the official site for the [NBA](https://stats.nba.com/players/list/) to obtain a list of all active players.
+  - [x] Use [Basketball Reference](https://www.basketball-reference.com/friv/twitter.html) to obtain list of all NBA players and their Twitter handles.   
+  - [x] Use the official site for the [NBA](https://nba.com/players/) to obtain a list of all active players. 
+  - [ ] Compare list of all NBA Twitter handles and list of active players to compile a list where they overlap. 
 - [ ] Scrape tweets from current NBA players to identify mentions and tags.  
 - [ ] Produce edge lists and interaction matrices to calculate the social network position of each player.  
 - [ ] Produce social networks using Twitter interactions.  
