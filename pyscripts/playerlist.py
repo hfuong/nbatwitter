@@ -37,9 +37,16 @@ page = BeautifulSoup(html, features = "lxml")
 # Identify the specific sections with player names
 playerParagraph = page.find_all('p', class_='nba-player-index__name')
 
+# Compile list of only current player names
+players = []
+for p in playerParagraph:
+    players.append(p.get_text(strip = True, separator = ' '))
+
+print(players)
+
 # Print only the text within the paragraph tags into a CSV
-with open('currentplayers.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
+with open('data/currentplayers.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['player'])
-    for p in playerParagraph:
-        writer.writerow([p.get_text(strip = True, separator = ' ')])
+    for player in players:
+        writer.writerow([player])
