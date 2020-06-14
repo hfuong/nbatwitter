@@ -38,7 +38,7 @@ page = BeautifulSoup(html, features = "lxml")
 playerParagraph = page.find_all('p', class_='nba-player-index__name')
 
 # Print only the text within the paragraph tags into a CSV
-with open('currentplayers.csv', 'w', encoding = 'utf-8') as csvfile:
+with open('currentplayers.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['player'])
     for p in playerParagraph:
