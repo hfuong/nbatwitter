@@ -36,12 +36,14 @@ for name in playerNameLinks:
 for account in playerTwitterLinks:
     handle.append(account.text)
 
-# Combine the two lists into a zip object and then into a list again
-nbaTwitter = list(zip(player, handle))
+# Combine the two lists into a dictionary
+nbaTwitter = dict(zip(player, handle))
+
+print(nbaTwitter)
 
 # Print output to CSV
-with open('twitterhandles.csv', 'w', encoding = 'utf-8') as csvfile:
+with open('twitterhandles.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['player', 'handle'])
-    for row in nbaTwitter:
-        writer.writerow(row)
+    for key, value in nbaTwitter.items():
+        writer.writerow([key, value])
