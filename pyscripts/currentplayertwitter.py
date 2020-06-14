@@ -15,5 +15,5 @@ for player, handle in nbaTwitter.items():
 with open('data/currenttwitter.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['currentplayer', 'handle'])
-    for key, value in currentTwitter:
+    for key, value in currentTwitter.items():
         writer.writerow([key, value])
