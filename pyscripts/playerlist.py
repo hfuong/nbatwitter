@@ -42,8 +42,6 @@ players = []
 for p in playerParagraph:
     players.append(p.get_text(strip = True, separator = ' '))
 
-print(players)
-
 # Print only the text within the paragraph tags into a CSV
 with open('data/currentplayers.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
     writer = csv.writer(csvfile)

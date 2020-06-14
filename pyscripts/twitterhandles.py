@@ -39,10 +39,8 @@ for account in playerTwitterLinks:
 # Combine the two lists into a dictionary
 nbaTwitter = dict(zip(player, handle))
 
-print(nbaTwitter)
-
 # Print output to CSV
-with open('twitterhandles.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
+with open('data/twitterhandles.csv', 'w', encoding = 'utf-8', newline = '') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['player', 'handle'])
     for key, value in nbaTwitter.items():
