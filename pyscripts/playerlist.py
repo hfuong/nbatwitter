@@ -6,7 +6,7 @@ import csv
 
 
 # Get web page with dynamic content that requires scrolling to load
-driver = webdriver.Chrome(executable_path = "C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe")
+driver = webdriver.Chrome(executable_path = "C:/Users/holly/PycharmProjects/chromedriver.exe")
 driver.get("https://nba.com/players/")
 
 # Get scroll height
