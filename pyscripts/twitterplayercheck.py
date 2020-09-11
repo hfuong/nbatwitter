@@ -10,3 +10,5 @@ twitter = pd.read_csv('data/currenttwitter.csv')
 noTwitter = set(player['player']) ^ set(twitter['currentplayer'])
 
 print(noTwitter)
+
+# Some errors relate to exclusion of accents or suffixes in NBA website (vs. Basketball Reference)
