@@ -16,6 +16,7 @@
   - [x] Use the official site for the [NBA](https://nba.com/players/) to obtain a list of all active players. 
   - [x] Compare list of all NBA Twitter handles and list of active players to compile a list where they overlap. 
 - [ ] Fix issue: names with accents not listed in currenttwitter.csv
+- [ ] Remove Twitter screen names (handles) that do not exist
 - [ ] Scrape followers/friendships from current NBA players to identify a basic network
 - [ ] Scrape tweets (mentions/tags, retweets, likes) from current NBA players to identify interactions.  
 - [ ] Produce edge lists and interaction matrices to calculate the social network position of each player.  
