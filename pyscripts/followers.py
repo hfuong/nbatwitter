@@ -21,9 +21,33 @@ api = tw.API(auth, wait_on_rate_limit = True)
 df = pd.read_csv('data/currenttwitter.csv')
 screenNames = df.handle.tolist()
 
-# Look up friendship details
-friend_status = api.show_friendship(source_screen_name = screenNames[12], target_screen_name = screenNames[72])
+# Create empty results df
+results = pd.DataFrame(columns = ['user1_name', 'following_user2', 'user2_name', 'following_user1'])
 
-# Print whether user_0 follows user_1 and whether user_1 follows user_0
-print(friend_status[0].screen_name, 'following', friend_status[1].screen_name, ':', friend_status[0].following, '\n',
-      friend_status[1].screen_name, 'following', friend_status[0].screen_name, ':', friend_status[1].following)
+# Loop to look up friendship details for each possible pair (order does not matter; i.e., no repeats)
+for user1 in range(len(screenNames)):
+    for user2 in range(user1, len(screenNames)):
+        # Skip duplicates where user is being paired with himself
+        if screenNames[user2] == screenNames[user1]:
+            pass
+        else:
+            try:
+                # Get friendship details
+                friend_status = api.show_friendship(source_screen_name = screenNames[user1],
+                                                    target_screen_name = screenNames[user2])
+
+                user1_name = friend_status[0].screen_name
+                following_user2 = friend_status[0].following
+                user2_name = friend_status[1].screen_name
+                following_user1 = friend_status[1].following
+
+                # Concatenate to a result dataframe
+                pair = [user1_name, following_user2, user2_name, following_user1]
+
+                # Append to results dataframe
+                results.loc[len(results)] = pair
+            except:
+                print(user1, user2)
+
+# Write to CSV
+results.to_csv('data/followers.csv')
