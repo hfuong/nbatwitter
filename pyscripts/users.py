@@ -27,6 +27,8 @@ for user in screenNames:
         u = api.get_user(screen_name = user)
     except tw.error.TweepError as e:
         if e.args[0][0]['code'] == 50:
-            print('Screen name that does not exist', user)
+            print('Screen name that does not exist:', user)
+
+            # Remove from dataframe and print to CSV
             df[~df.handle.str.contains(user)]
             df.to_csv('data/currenttwitter_updated.csv')
