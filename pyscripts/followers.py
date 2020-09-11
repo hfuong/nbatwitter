@@ -18,10 +18,12 @@ auth.set_access_token(ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET)
 api = tw.API(auth, wait_on_rate_limit = True)
 
 # Load list of screen names (Twitter handles)
-screenNames = ["RealStevenAdams", "Bam1of1", "aldridge_12", "KyleJamal4", "NickeilAW"]
+df = pd.read_csv('data/currenttwitter.csv')
+screenNames = df.handle.tolist()
 
 # Look up friendship details
-friend_status = api.show_friendship(source_screen_name = screenNames[0], target_screen_name = screenNames[1])
+friend_status = api.show_friendship(source_screen_name = screenNames[12], target_screen_name = screenNames[72])
 
 # Print whether user_0 follows user_1 and whether user_1 follows user_0
-print(friend_status[0].following, friend_status[1].following)
+print(friend_status[0].screen_name, 'following', friend_status[1].screen_name, ':', friend_status[0].following, '\n',
+      friend_status[1].screen_name, 'following', friend_status[0].screen_name, ':', friend_status[1].following)
