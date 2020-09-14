@@ -15,7 +15,7 @@
   - [x] Use [Basketball Reference](https://www.basketball-reference.com/friv/twitter.html) to obtain list of all NBA players and their Twitter handles.   
   - [x] Use the official site for the [NBA](https://nba.com/players/) to obtain a list of all active players. 
   - [x] Compare list of all NBA Twitter handles and list of active players to compile a list where they overlap. 
-- [ ] Scrape followers/friendships from current NBA players to identify a basic network.  
+- [x] Scrape followers/friendships from current NBA players to identify a basic network.  
 - [ ] Produce edge lists and interaction matrices based on followers to calculate the social network position of each player.
 - [ ] Produce social networks using Twitter followers.
 - [ ] Scrape tweets (mentions/tags, retweets, likes) from current NBA players to identify interactions.  
