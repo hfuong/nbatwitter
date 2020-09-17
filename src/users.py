@@ -31,4 +31,4 @@ for user in screenNames:
 
             # Remove from dataframe and print to CSV
             df[~df.handle.str.contains(user)]
-            df.to_csv('data/currenttwitter_updated.csv')
+            df.to_csv('data/currenttwitter_updated.csv', index = False)
