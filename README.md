@@ -24,4 +24,4 @@
 
 ## Bugs to fix: 
 - [ ] Names with accents not listed in currenttwitter.csv
-- [ ] Check errors from followers.csv (nonexistent screen names still searched)
+- [ ] Check errors from followers.csv (nonexistent screen names still searched, some pairs didn't search)
