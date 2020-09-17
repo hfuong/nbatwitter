@@ -17,7 +17,7 @@
   - [x] Compare list of all NBA Twitter handles and list of active players to compile a list where they overlap 
 - [x] Remove Twitter screen names (handles) that do not exist
 - [x] Scrape followers/friendships from current NBA players to identify a basic network
-- [ ] Produce edge lists and interaction matrices based on followers to calculate the social network position of each player  
+- [x] Produce edge lists based on followers to calculate the social network position of each player  
 - [ ] Scrape tweets (mentions/tags, retweets, likes) from current NBA players to identify interactions  
 - [ ] Produce social networks using Twitter interactions  
 - [ ] Use social network metrics to identify possible trends by teams or players  
