@@ -18,18 +18,21 @@ auth.set_access_token(ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET)
 api = tw.API(auth, wait_on_rate_limit = True)
 
 # Load list of screen names (Twitter handles)
-df = pd.read_csv('data/currenttwitter.csv')
+df = pd.read_csv('data/currenttwitter_updated.csv')
 screenNames = df.handle.tolist()
 
 # Create empty results df
-results = pd.DataFrame(columns = ['user1_name', 'following_user2', 'user2_name', 'following_user1'])
+results = pd.read_csv('data/followers.csv')
 
 # Loop to look up friendship details for each possible pair (order does not matter; i.e., no repeats)
 for user1 in range(len(screenNames)):
+    print(screenNames[user1])
+
     for user2 in range(user1, len(screenNames)):
         # Skip duplicates where user is being paired with himself
         if screenNames[user2] == screenNames[user1]:
-            pass
+            continue
+
         else:
             try:
                 # Get friendship details
@@ -46,8 +49,10 @@ for user1 in range(len(screenNames)):
 
                 # Append to results dataframe
                 results.loc[len(results)] = pair
-            except:
-                print(user1, user2)
 
-# Write to CSV
-results.to_csv('data/followers.csv')
+                # Write to CSV
+                results.to_csv('data/followers.csv')
+
+            # Print error and pairing where error came up but continue
+            except tw.error.TweepError as e:
+                print(e, screenNames[user1], screenNames[user2])
