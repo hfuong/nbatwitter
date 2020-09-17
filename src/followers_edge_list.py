@@ -2,8 +2,8 @@
 import pandas as pd
 
 # Load data
-df = pd.read_csv('data/followers.csv', index_col = 0)
-players = pd.read_csv('data/currenttwitter_updated.csv')
+df = pd.read_csv('../data/followers.csv', index_col = 0)
+players = pd.read_csv('../data/currenttwitter_updated.csv')
 
 # Remove rows where neither player follows each other (i.e., remove False & False but keep any with True)
 df = df[df['following_user2'] | df['following_user1']]
